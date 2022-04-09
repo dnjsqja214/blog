@@ -20,11 +20,13 @@ public class BoardDao {
 		String dbpw = "java1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
 		// DML insert문
-		String sql = "SELECT INTO board(category_name , board_title , board_content , create_date ,update_date ) VALUES (?,?,?,now(), now())";
+		String sql = "INSERT INTO board(category_name , board_title , board_content,board_pw, create_date ,update_date ) VALUES (?,?,?,?,now(), now())";
+		
 		stmt = conn.prepareStatement(sql);
 		stmt.setString(1, board.categoryName);
 		stmt.setString(2, board.boardTitle);
 		stmt.setString(3, board.boardContent);
+		stmt.setString(4, board.boardPw);
 		int row = stmt.executeUpdate();
 		if(row == 1) {
 			System.out.println("입력성공");
@@ -150,6 +152,7 @@ public class BoardDao {
 		String dburl = "jdbc:mariadb://localhost:3306/blog";
 		String dbuser = "root";
 		String dbpw = "java1234";
+		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
 		
 		String sql = "UPDATE board SET board_title=? boardContent=? WHERE book_no=? AND book_pw=?";
 		stmt = conn.prepareStatement(sql);
@@ -157,6 +160,29 @@ public class BoardDao {
 		stmt.setString(2, board.boardContent);
 		stmt.setInt(3, board.boardNo);
 		stmt.setString(4, board.boardPw);
+		row = stmt.executeUpdate();
+		
+		stmt.close();
+		conn.close();
+		
+		return row;
+	}
+	
+	public int deleteBoard(int boardNo ) throws Exception {
+		int row =0;
+		Class.forName("org.mariadb.jdbc.Driver");
+		// 데이터베이스 자원 준비
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		String dburl = "jdbc:mariadb://localhost:3306/blog";
+		String dbuser = "root";
+		String dbpw = "java1234";
+		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
+		
+		String sql = "DELETE FROM board where board_no=?";
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, boardNo);
 		row = stmt.executeUpdate();
 		
 		stmt.close();

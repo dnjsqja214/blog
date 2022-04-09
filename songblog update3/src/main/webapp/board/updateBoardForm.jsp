@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="vo.*" %>
-<%@ page import ="java.util.*" %>
 <%@ page import ="dao.*" %>
+<%@ page import ="java.util.*" %>
+<%@ page import ="vo.*" %>
 <%
 	// boardOne에서 boardNo값 받아오기
 	int boardNo = Integer.parseInt(request.getParameter("boardNo"));
@@ -27,57 +27,57 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="col-sm-8">
  	<h1 class="text-primary">UPDATE</h1>
  	<p class="text-info">insert text</p>
 		<form method="post" action="<%=request.getContextPath()%>/updateBoardAction.jsp">
-		<table class="table table-bordered">
-			<tr class="table-primary">
-				<td><strong>boardNo</strong></td>
-				<td><input type="text" name="boardNo" value="<%=boardNo%>" readonly="readonly"></td>
-			</tr>
-			<tr class="table-info">
-				<td><strong>categoryName</strong></td>
-				<td>
-					<select name="categoryName">
-						<%
-							for(String s : categoryList) {
-								if(s.equals(board.categoryName)) {
-						%>
-									<option selected="selected" value="<%=s%>"><%=s%></option>
-						<%
-								} else {
-						%>
-									<option value="<%=s%>"><%=s%></option>
-						<%		
+		<div class="container">
+			<table class="table table-bordered">
+				<tr class="table-primary">
+					<td><strong>boardNo</strong></td>
+					<td><input type="text" name="boardNo" value="<%=boardNo%>" readonly="readonly"></td>
+				</tr>
+				<tr class="table-info">
+					<td><strong>categoryName</strong></td>
+					<td>
+						<select name="categoryName">
+							<%
+								for(String s : categoryList) {
+									if(s.equals(board.categoryName)) {
+							%>
+										<option selected="selected" value="<%=s%>"><%=s%></option>
+							<%
+									} else {
+							%>
+										<option value="<%=s%>"><%=s%></option>
+							<%		
+									}
 								}
-							}
-						%>
-					</select>
-				</td>
-			</tr>
-			<tr class="table-primary">
-				<td><strong>boardTitle</strong></td>
-				<td><input type="text" name="boardTitle" value="<%=board.boardTitle%>"></td>
-			</tr>
-			<tr class="table-info">
-				<td><strong>boardContent</strong></td>
-				<td>
-					<textarea rows="5" cols="50" name="boardContent"><%=board.boardContent%></textarea>
-				</td>
-			</tr>
-			<tr class="table-primary">	
-				<td><strong>boardPw</strong></td>
-				<td><input type="password" name="boardPw" value=""></td>
-			</tr>
-		</table>
-		<div>
-			<button type="submit" class="btn btn-outline-primary" role="button">수정</button>
-		</div>
-		<div>
-			<a href="<%=request.getContextPath()%>/boardList.jsp" class="btn btn-outline-secondary" role="button" class="text-right">리스트로 돌아가기</a>
-		</div>
+							%>
+						</select>
+					</td>
+				</tr>
+				<tr class="table-primary">
+					<td><strong>boardTitle</strong></td>
+					<td><input type="text" name="boardTitle" value="<%=board.boardTitle%>"></td>
+				</tr>
+				<tr class="table-info">
+					<td><strong>boardContent</strong></td>
+					<td>
+						<textarea rows="5" cols="50" name="boardContent"><%=board.boardContent%></textarea>
+					</td>
+				</tr>
+				<tr class="table-primary">	
+					<td><strong>boardPw</strong></td>
+					<td><input type="password" name="boardPw" value=""></td>
+				</tr>
+			</table>
 		</form>
 	</div>
+				<div>
+					<button type="submit" class="btn btn-outline-primary" role="button">수정</button>
+				</div>
+				<div>
+					<a href="<%=request.getContextPath()%>/board/boardList.jsp" class="btn btn-outline-secondary" role="button" class="text-right">리스트로 돌아가기</a>
+				</div>
 </body>
 </html>
