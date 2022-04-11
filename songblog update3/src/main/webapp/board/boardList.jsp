@@ -79,30 +79,13 @@
 	</nav>  
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
- 	 <a class="navbar-brand">Function</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link"  href="<%=request.getContextPath()%>/board/insertBoardForm.jsp">입력</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%=request.getContextPath()%>/board/searchBoardForm.jsp">검색</a> <!-- 찾기 -->
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp?">삭제</a> <!-- 찾기 -->
-      </li>
-    </ul>
-   </div>
 </nav>
 	<!-- category별 게시글 링크 메뉴 -->
 	<div>
 		<ul class="list-group list-group-horizontal"> <!--  리스트 그룹으로 함 -->
-					<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ">
-						<a href="<%=request.getContextPath()%>/board/boardList.jsp">전체 게시물</a>
-					</li>
+			<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ">
+				<a href="<%=request.getContextPath()%>/board/boardList.jsp">전체 게시물</a>
+			</li>
 			<%
 				for(HashMap<String, Object> m : categoryList) { // 카테고리를 선택하면 카테고리 테이블페이지가 에러가 남 -->cnt값도 넘겨주자!
 			%>
@@ -115,24 +98,52 @@
 			%>
 		</ul>
 	</div>
+	<div class="container">
+	<hr class="d-sm-none">
 	<div class="row">
-		<div class="col-sm-2"></div>
+	<div class="col-sm-2"></div>
 		<div>
 			<h2  class="font-weight-bold">게시글 목록<span class="badge badge-dark">(total : <%=totalCount%>)</span></h2>
 		</div>
-	</div>
 	<!-- rowPerPage 갯수 정하기 -->
-	<div class="row">
-		<div class="col-sm-9"></div> 
-		<div class="col-sm-3" class="dropdown">
+	<div class="col-sm-5"></div>
+		<div class="dropdown">
 			<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">행 갯수</button>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=5& currentPage=<%=currentPage%>&categoryName=<%=categoryName%>&categoryCnt=<%=categoryCnt%>"">5</a>
-				<a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=10& currentPage=<%=currentPage%>&categoryName=<%=categoryName%>&categoryCnt=<%=categoryCnt%>">10</a>
-			</div>
+		<div class="dropdown-menu">
+			<a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=5& currentPage=<%=currentPage%>&categoryName=<%=categoryName%>&categoryCnt=<%=categoryCnt%>">5</a>
+			<a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=10& currentPage=<%=currentPage%>&categoryName=<%=categoryName%>&categoryCnt=<%=categoryCnt%>">10</a>
 		</div>
 	</div>
-	<div class="container">
+	</div>
+	<!-- 좌측 인덱스 추가 -->
+	<div class="row">
+	<div class="col-sm-2">
+    <h3>Index</h3>
+    <ul class="nav nav-pills flex-column">
+		<li class="nav-item">
+		  	<a class="nav-link active" href="<%=request.getContextPath()%>/board/boardList.jsp">boardList</a>
+		</li>
+        <li class="nav-item">
+          	<a class="nav-link" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp">Guestbook</a>
+        </li>
+        <li class="nav-item">
+        	  <a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Photo</a>
+        </li>
+    </ul>
+    <h5>Blog Function</h5>
+    <ul class="nav nav-pills flex-column" >
+	    <li class="nav-item">
+	      	<a class="nav-link" href="<%=request.getContextPath()%>/board/insertBoardForm.jsp">입력</a>
+	    <li class="nav-item">
+	      <a class="nav-link" href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp">삭제</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link disabled" href="#">Disabled</a>
+	    </li>
+    </ul>
+    <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-10">
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
@@ -147,15 +158,16 @@
 				for(Board b : list) {
 			%>		
 					<tr>
-						<td class="text-center"><%=b.categoryName%></td>
-						<td><a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.boardNo%>"class="text-info" data-toggle="tooltip" title="check information"><%=b.boardTitle%></a></td>
-						<td class="text-right"><%=b.createDate%></td>
+						<td class="text-center"><%=b.getCategoryName()%></td>
+						<td><a href="<%=request.getContextPath()%>/board/boardOne.jsp?boardNo=<%=b.getBoardNo()%>"class="text-info" data-toggle="tooltip" title="check information"><%=b.getBoardTitle()%></a></td>
+						<td class="text-right"><%=b.getCreateDate()%></td>
 					</tr>
 			<%		
 				}
 			%>
 		</tbody>
 	</table>
+	</div>
 	</div>
 	
 	<!-- 숫자페이지 만들기 -->
@@ -228,7 +240,8 @@
 			%>
 		</ul>
 	<div class="row">
-		<div class="col-sm-2"></div>
+		<div class="col-sm-3"></div>
 		<a href="<%=request.getContextPath()%>/board/insertBoardForm.jsp?" class="btn btn-outline-success" role="button" >게시글 입력</a>
 	</div>
+</div>
 </html>
