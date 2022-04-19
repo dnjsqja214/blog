@@ -109,10 +109,6 @@
 			<button type="submit" class="btn btn-outline-primary" role="button">수정</button>
 			<a href="<%=request.getContextPath()%>/board/boardList.jsp" class="btn btn-outline-secondary" role="button" class="text-right">리스트로 돌아가기</a>
 		</form>
-	<div class="row">
-	<div class="col-sm-10">
-	</div>
-	</div>
 	</div>
 </body>
 </html>

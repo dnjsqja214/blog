@@ -4,7 +4,6 @@
 <%@ page import="java.util.*" %>
 <%@ page import="vo.*" %>
 <%
-	
 	int boardNo=0;
 	if(request.getParameter("boardNo")!= null) {
 		boardNo = Integer.parseInt(request.getParameter("boardNo"));
@@ -17,6 +16,7 @@
 	ArrayList<HashMap<String, Object>> categoryList = categoryDao.categoryCnt();
 	
 	int totalCount = boardDao.selectboardTotalRow();  // 전체 행갯수
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -55,35 +55,25 @@
 			%>
 		</ul>
 	</div>
-<div class="container-fluid">
-	<div class="row">
-	 <div class="col-sm-5"></div>
-		<h1 class="text-danger">번호 삭제</h1>
-	</div>
     <div  class="container">
- 		<h2>input boardNo</h2>
-		<form method="post" action="<%=request.getContextPath()%>/board/deleteBoardAction.jsp">
-    		<div  class="form-group">
-     		 <label for="usr">boardNo:</label>
-     			 <input type="text" class="form-control" name="boardNo" readonly="readonly"value="<%=boardNo%>">
-    		</div>
-	 	 <div>
-			<script type="text/javascript">
+	<div class="row">
+	 	<div class="col-sm-5"></div>
+			<h1 class="text-danger">번호 삭제</h1>
+		</div>
+ 			<h2>input boardNo</h2>
+		<div  class="form-group">
+			<label for="usr">boardNo:</label>
+			<input type="text" class="form-control" name="boardNo" readonly="readonly"value="<%=boardNo%>">
+		</div>
+		<!-- 삭제버튼을 누르실 경고창 -->
+		<script type="text/javascript">
 			function del() {
 			  if (confirm("정말 삭제하시겠습니까?"))
 			    list_ok.submit();
 			 }
-			</script>
-		</div>
-	  		<div class="row">
-			  <div class="col-sm-10">
-			  	<button type="submit" class="btn btn-outline-danger" onclick="del();">delete</button></div>
-			  <div class="col-sm-2">
-			  	<a href="<%=request.getContextPath()%>/board/boardList.jsp" class="btn btn-secondary" role="button" class="text-right">리스트로 돌아가기</a>
-			 </div>
-			</div>
-		</form>
+		</script>
+	  	<a href="<%=request.getContextPath()%>/board/deleteBoardAction.jsp?boardNo=<%=boardNo%>" class="btn btn-outline-danger" onclick="del();">삭제</a>
+	  	<a href="<%=request.getContextPath()%>/board/boardList.jsp" class="btn btn-secondary" role="button" class="text-right">리스트로 돌아가기</a>
 	</div>
-  </div>
 </body>
 </html>
