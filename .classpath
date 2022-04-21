@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="cashbook/src/main/java"/>
 	<classpathentry kind="src" path="songblog update3/src/main/java"/>
-	<classpathentry kind="lib" path="cashbook/src/main/webapp/WEB-INF/lib/mariadb-java-client-3.0.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="songblog update3/src/main/webapp/WEB-INF/lib/cos.jar"/>
 	<classpathentry kind="lib" path="songblog update3/src/main/webapp/WEB-INF/lib/mariadb-java-client-3.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
