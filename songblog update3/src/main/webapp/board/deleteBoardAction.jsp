@@ -8,7 +8,7 @@
 
 	// 편의성을 위해 등록
 	Board board = new Board();
-	board.boardNo = boardNo;
+	board.setBoardNo(boardNo);
 	
 	
 	//mariadb 드라이버 접속
@@ -23,14 +23,14 @@
 	
 	// 쿼리에 저장
 	PreparedStatement stmt = conn.prepareStatement("delete from board where board_no=? ");
-	stmt.setInt(1, board.boardNo);
+	stmt.setInt(1, board.getBoardNo());
 	
 	
 	// 디버깅 and 페이지 이동
 	int row = stmt.executeUpdate();
 	if(row ==  0) {
 		System.out.println("삭제 실패");
-		response.sendRedirect("./deleteBoardForm.jsp?boardNo="+board.boardNo);
+		response.sendRedirect("./deleteBoardForm.jsp?boardNo="+board.getBoardNo());
 	} else {
 		System.out.println("삭제 성공");
 		response.sendRedirect("./boardList.jsp");

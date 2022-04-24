@@ -23,10 +23,10 @@ public class BoardDao {
 		String sql = "INSERT INTO board(category_name , board_title , board_content,board_pw, create_date ,update_date ) VALUES (?,?,?,?,now(), now())";
 		
 		stmt = conn.prepareStatement(sql);
-		stmt.setString(1, board.categoryName);
-		stmt.setString(2, board.boardTitle);
-		stmt.setString(3, board.boardContent);
-		stmt.setString(4, board.boardPw);
+		stmt.setString(1, board.getCategoryName());
+		stmt.setString(2, board.getBoardTitle());
+		stmt.setString(3, board.getBoardContent());
+		stmt.setString(4, board.getBoardPw());
 		int row = stmt.executeUpdate();
 		if(row == 1) {
 			System.out.println("입력성공");
@@ -72,10 +72,10 @@ public class BoardDao {
 		// 데이터 변환(가공)
 		while(boardRs.next()) {
 			Board b = new Board();
-			b.boardNo = boardRs.getInt("boardNo");
-			b.categoryName = boardRs.getString("categoryName");
-			b.boardTitle = boardRs.getString("boardTitle");
-			b.createDate = boardRs.getString("createDate");
+			b.setBoardNo(boardRs.getInt("boardNo"));
+			b.setCategoryName(boardRs.getString("categoryName"));
+			b.setBoardTitle(boardRs.getString("boardTitle"));
+			b.setCreateDate(boardRs.getString("createDate"));
 			list.add(b);
 		}
 		// 데이터베이스 자원들 반환
@@ -128,12 +128,12 @@ public class BoardDao {
 		rs = stmt.executeQuery();
 		if(rs.next()) { // true값일때만 커서 옮기면서
 			board = new Board(); // board값 담을 새로운 리스트 생성
-			board.boardNo = rs.getInt("boardNo");
-			board.categoryName = rs.getString("categoryName");
-			board.boardTitle =  rs.getString("boardTitle");
-			board.boardContent = rs.getString("boardContent");
-			board.createDate =  rs.getString("createDate");
-			board.updateDate =  rs.getString("updateDate");
+			board.setBoardNo(rs.getInt("boardNo"));
+			board.setCategoryName(rs.getString("categoryName"));
+			board.setBoardTitle(rs.getString("boardTitle"));
+			board.setBoardContent(rs.getString("boardContent"));
+			board.setCreateDate(rs.getString("createDate"));
+			board.setUpdateDate(rs.getString("updateDate"));
 		}
 		rs.close();
 		stmt.close();
@@ -147,19 +147,18 @@ public class BoardDao {
 		// 데이터베이스 자원 준비
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		ResultSet rs = null;
 		
 		String dburl = "jdbc:mariadb://localhost:3306/blog";
 		String dbuser = "root";
 		String dbpw = "java1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
 		
-		String sql = "UPDATE board SET board_title=? boardContent=? WHERE book_no=? AND book_pw=?";
+		String sql = "UPDATE board SET category_name=? board_title=? boardContent=?  WHERE boardNo=?";
 		stmt = conn.prepareStatement(sql);
-		stmt.setString(1, board.boardTitle);
-		stmt.setString(2, board.boardContent);
-		stmt.setInt(3, board.boardNo);
-		stmt.setString(4, board.boardPw);
+		stmt.setString(1, board.getCategoryName());
+		stmt.setString(2, board.getBoardTitle());
+		stmt.setString(3, board.getBoardContent());
+		stmt.setInt(4, board.getBoardNo());
 		row = stmt.executeUpdate();
 		
 		stmt.close();

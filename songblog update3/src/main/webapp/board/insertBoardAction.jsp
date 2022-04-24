@@ -24,10 +24,10 @@
 	BoardDao boardDao = new BoardDao();
 	Board board = new Board();
 	
-	board.categoryName=categoryName;								
-	board.boardTitle=boardTitle;										//-->board에 가져온 파라미터값 넣기
-	board.boardContent=boardContent;
-	board.boardPw=boardPw;
+	board.setCategoryName(categoryName);							
+	board.setBoardTitle(boardTitle);										//-->board에 가져온 파라미터값 넣기
+	board.setBoardContent(boardContent);
+	board.setBoardPw(boardPw);
 	
 	boardDao.insertBoard(board);
 	
