@@ -19,6 +19,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+	<jsp:include page="/board/header.jsp"></jsp:include>
 	<div class="container" >
 	<div class="row">
 	<div class="col-sm-2">

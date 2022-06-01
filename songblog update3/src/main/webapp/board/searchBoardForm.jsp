@@ -2,12 +2,7 @@
 <% 
 	// list창에 seachForm에 이동링크를 만들기
 	// 출력창에 테이블을 text만들기
-	
-	
-	
-	
-		// 내용
-	// board 검색기능 추가 - dao 미구현 , 검색 알고리즘 미완성
+
 %>
 <!DOCTYPE html>
 <html>
@@ -17,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/board/header.jsp"></jsp:include>
 	<div class="container">
 		<h1 class="text-warning"><strong>검색</strong></h1>
 		<form method="post" action="<%=request.getContextPath()%>/board/searchBoardAction.jsp">

@@ -66,38 +66,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-	 <nav class="navbar navbar-expand-sm bg- navbar-dark">
-	  <h1>B L O G</h1>
-		<div class="spinner-grow text-danger"></div>
-		<div class="spinner-grow text-warning"></div>
-		<div class="spinner-grow text-success"></div>
-		<div class="spinner-grow text-info"></div>
-		<div class="spinner-grow text-primary"></div>
-		<div class="spinner-grow text-muted"></div>
-		<div class="spinner-grow text-secondary"></div>
-		<div class="spinner-grow text-dark"></div>
-	</nav>  
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-</nav>
-	<!-- category별 게시글 링크 메뉴 -->
-	<div>
-		<ul class="list-group list-group-horizontal"> <!--  리스트 그룹으로 함 -->
-			<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ">
-				<a href="<%=request.getContextPath()%>/board/boardList.jsp">전체 게시물</a>
-			</li>
-			<%
-				for(HashMap<String, Object> m : categoryList) { // 카테고리를 선택하면 카테고리 테이블페이지가 에러가 남 -->cnt값도 넘겨주자!
-			%>
-					<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center ">
-						<a href="<%=request.getContextPath()%>/board/boardList.jsp?categoryName=<%=m.get("categoryName")%>&categoryCnt=<%=m.get("cnt")%>"><%=m.get("categoryName")%> </a>
-						<span class="badge badge-danger badge-pill"><%=m.get("cnt")%></span> <!--  게시물의 수 -->
-					</li>
-			<%
-				}
-			%>
-		</ul>
-	</div>
+<jsp:include page="/board/header.jsp"></jsp:include>
 	<div class="container">
 	<hr class="d-sm-none">
 	<div class="row">
@@ -114,10 +83,6 @@
 			<a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardList.jsp?rowPerPage=10& currentPage=<%=currentPage%>&categoryName=<%=categoryName%>&categoryCnt=<%=categoryCnt%>">10</a>
 		</div>
 	</div>
-<<<<<<< HEAD
-	<div class="container">
-	
-=======
 	</div>
 	<!-- 좌측 인덱스 추가 -->
 	<div class="row">
@@ -134,21 +99,8 @@
         	  <a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Photo</a>
         </li>
     </ul>
-    <h5>Blog Function</h5>
-    <ul class="nav nav-pills flex-column" >
-	    <li class="nav-item">
-	      	<a class="nav-link" href="<%=request.getContextPath()%>/board/insertBoardForm.jsp">입력</a>
-	    <li class="nav-item">
-	      <a class="nav-link" href="<%=request.getContextPath()%>/board/deleteBoardForm.jsp">삭제</a>
-	    </li>
-	    <li class="nav-item">
-	      <a class="nav-link disabled" href="#">Disabled</a>
-	    </li>
-    </ul>
-    <hr class="d-sm-none">
     </div>
     <div class="col-sm-10">
->>>>>>> branch 'master' of https://github.com/dnjsqja214/blog.git
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>

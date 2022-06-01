@@ -27,6 +27,7 @@
 	
 	
 	// 디버깅 and 페이지 이동
+	String error = null;
 	int row = stmt.executeUpdate();
 	if(row ==  0) {
 		System.out.println("삭제 실패");
