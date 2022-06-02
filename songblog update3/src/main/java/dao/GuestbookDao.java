@@ -5,11 +5,46 @@ import java.sql.*;
 public class GuestbookDao {
 	// 생성자 메서드
 	public GuestbookDao() {}
-	/*
-	public ArrayList<Guestbook> guestList(int beginRow, int rowPerPage) throws Exception{
+	
+	public ArrayList<Guestbook> guestList(String writer, int beginRow, int rowPerPage) throws Exception{
 		ArrayList<Guestbook> list = new ArrayList<Guestbook>();
+		Class.forName("org.mariadb.jdbc.Driver");
+		
+		// 데이터베이스 자원 준비
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
+		String dbuser = "root";
+		String dbpw = "mariadb1234";
+		String sql="SELECT guestbook_no guestbookNo, guestbook_content guestbookContent,guestbook_memo  guestbookMemo, writer, create_date createDate FROM guestbook WHERE writer=? ORDER BY create_date DESC LIMIT ?, ?;";
+		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
+		stmt = conn.prepareStatement(sql);
+		stmt.setString(1,writer );
+		stmt.setInt(2, beginRow);
+		stmt.setInt(3, rowPerPage);
+		rs = stmt.executeQuery();
+		
+		// 데이터 변환(가공)
+		while(rs.next()) {
+			Guestbook g = new Guestbook();
+			g.setGuestbookNo(rs.getInt("guestbookNo"));
+			g.setGuestbookContent(rs.getString("guestbookContent"));
+			g.setGuestbookMemo(rs.getString("guestbookMemo"));
+			g.setWriter(rs.getString("writer"));
+			g.setCreateDate(rs.getString("createDate"));
+			list.add(g);
+		}
+		
+		// 데이터베이스 자원들 반환
+		rs.close();
+		stmt.close();
+		conn.close();
+		
+		return list;
 	}
-	*/
+	
 	// guestbook n행씩 반환 메서드
 	public ArrayList<Guestbook> selectGuestbookListByPage(int beginRow, int rowPerPage) throws Exception {
 		ArrayList<Guestbook> list = new ArrayList<Guestbook>();

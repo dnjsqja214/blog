@@ -57,7 +57,7 @@
 				<div class="input-group">
 					<div class="input-group-prepend">
 					<!-- 아이디를 누르시 모아보기 -->
-						<button type="button" class="btn btn-primary"><%=g.getWriter()%></button>
+						<a href="<%=request.getContextPath()%>/guestbook/writerOne.jsp?writer=<%=g.getWriter()%>" class="btn btn-primary" role="button"><%=g.getWriter()%></a>
 					</div>
 					<input type="text" class="form-control" value="<%=g.getGuestbookContent()%>" readonly="readonly">
 				</div>
@@ -89,7 +89,7 @@
 		</tr>
 		<tr>
 			<td colspan="8">
-			<textarea name = "guestbookMemo" rows="2" cols="70" class="form-control" placeholder="방명록을 남겨주세요"></textarea>
+				<textarea name = "guestbookMemo" rows="2" cols="70" class="form-control" placeholder="방명록을 남겨주세요"></textarea>
 			</td>
 		</tr>
 	</table>

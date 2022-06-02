@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <nav class="navbar navbar-expand-sm bg- navbar-dark">
-	  <h1>C A S H B O O K</h1>
+	  <h1>G U E S T B O O K</h1>
 		<div class="spinner-grow text-danger"></div>
 		<div class="spinner-grow text-warning"></div>
 		<div class="spinner-grow text-success"></div>

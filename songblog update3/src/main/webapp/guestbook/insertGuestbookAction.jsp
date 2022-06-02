@@ -24,7 +24,7 @@
 	Guestbook guestbook = new Guestbook();
 	
 	guestbook.setGuestbookContent(guestbookContent);	
-	guestbook.setGusetbookMemo(guestbookMemo);
+	guestbook.setGuestbookMemo(guestbookMemo);
 	guestbook.setGuestbookPw(guestbookPw);										//-->guestbook에 가져온 파라미터값 넣기
 	guestbook.setWriter(writer);
 	
