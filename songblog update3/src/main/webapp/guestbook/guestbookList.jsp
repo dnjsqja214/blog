@@ -43,34 +43,16 @@
 </style>
 </head>
 <body>
-<div class="jumbotron text-center">
-	<h1 class="logo mr-auto">
-		방명록
-	</h1>
-</div>
-<br>
-<br>
-	<!-- 메인 메뉴 시작 -->
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" href="<%=request.getContextPath()%>/board/boardList.jsp">boardList</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link  active" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp">Guestbook</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Photo</a>
-    </li>
-  </ul>
-<div class ="container">
+<jsp:include page="/guestbook/header.jsp"></jsp:include>
 	<!-- 방명록 입력 -->
 	<div class="jb-wrap">
 	<!-- 방명록 리스트 출력 -->
 	<br>
+	<div class="col-sm-10">
 <%
 	for(Guestbook g : list) {
 %>
-		<div class="card">
+		<div class="card" >
 			<div class="card-header">
 				<div class="input-group">
 					<div class="input-group-prepend">
@@ -93,6 +75,7 @@
 	<%
 		}
 	%>
+	</div>
 	<br>
 	<form method="post" action="<%=request.getContextPath()%>/guestbook/insertGuestbookAction.jsp">
 	<table class = "table table-bordered">
@@ -102,11 +85,11 @@
 			<td>비밀번호</td>
 			<td><input type = "password" name="guestbookPw" class="form-control"></td>	
 			<td>제목</td>
-			<td><input type = "text" name="guestbookContent" class="form-control"></td>
+			<td><input type = "text" name="guestbookContent" class="form-control" ></td>
 		</tr>
 		<tr>
-			<td colspan="4">
-			<textarea name = "guestbookMemo" rows="2" cols="70" class="form-control"></textarea>
+			<td colspan="8">
+			<textarea name = "guestbookMemo" rows="2" cols="70" class="form-control" placeholder="방명록을 남겨주세요"></textarea>
 			</td>
 		</tr>
 	</table>

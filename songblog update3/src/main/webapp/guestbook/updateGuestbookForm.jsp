@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div class="container">
-	<div class="row">
-	<div class="col-sm-1"></div>
+<jsp:include page="/guestbook/header.jsp"></jsp:include>
+ 	<div class="col-sm-10">
+	 <br>
+	 <br>
 	<div>
  		<h1 class="text-primary">UPDATE</h1>
  		<p class="text-info">Write down the corrections in the text</p>
- 	</div>
  	</div>
 		<form method="post" action="<%=request.getContextPath()%>/guestbook/updateGuestbookAction.jsp">
 			<table class="table table-bordered">
@@ -42,6 +42,7 @@
 			</table>
 			<div>
 				<button type="submit" class="btn btn-outline-primary" role="button">수정</button>
+				<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp" class="btn btn-outline-secondary" role="button" class="text-right">방명록 돌아가기</a>
 			</div>
 		</form>
 	</div>

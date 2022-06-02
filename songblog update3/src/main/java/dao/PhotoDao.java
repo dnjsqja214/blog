@@ -25,7 +25,10 @@ public class PhotoDao {
 		Class.forName("org.mariadb.jdbc.Driver");
 		Connection conn = null;
 		PreparedStatement stmt = null;
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/blog","root","java1234");
+	    String dburl = "jdbc:mariadb://13.124.231.44/blog";
+	    String dbuser = "root";
+	    String dbpw = "mariadb1234";
+        conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		String sql = "DELECT FROM photo WHRER photo_no=?, photo_pw=?";
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, photoNo);
@@ -52,7 +55,10 @@ public class PhotoDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/blog","root","java1234");
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
+		String dbuser = "root";
+		String dbpw = "mariadb1234";
+	    conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 		String sql = "SELECT photo_no photoNo, photo_name photoName FROM photo ORDER BY create_date DESC LIMIT ?,?";
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, beginRow);
@@ -76,9 +82,9 @@ public class PhotoDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String dburl = "jdbc:mariadb://localhost:3306/blog";
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
 		
 		String sql ="SELECT photo_no photoNo, photo_name photoName FROM photo WHERE photo_no =?";

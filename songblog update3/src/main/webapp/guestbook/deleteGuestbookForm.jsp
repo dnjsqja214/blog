@@ -12,11 +12,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<div  class="container">
-	<div class="row">
- 	<div class="col-sm-5"></div>
+<jsp:include page="/guestbook/header.jsp"></jsp:include>
+ 	<div class="col-sm-10">
+	 <br>
+	 <br>
 		<h1 class="text-danger">삭제</h1>
- 	</div>
 	<form  method="post" action="<%=request.getContextPath()%>/guestbook/deleteGuestbookAction.jsp">
 		<table>
 			<tr>
@@ -30,6 +30,7 @@
 			<tr>
 				<td>
 					<button type="submit" class="btn btn-outline-danger">삭제</button>
+					<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp" class="btn btn-outline-secondary" role="button" class="text-right">방명록 돌아가기</a>
 				</td>
 			</tr>
 		</table>

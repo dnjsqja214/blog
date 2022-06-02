@@ -15,9 +15,9 @@ public class BoardDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
-		String dburl = "jdbc:mariadb://localhost:3306/blog";
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
 		// DML insert문
 		String sql = "INSERT INTO board(category_name , board_title , board_content,board_pw, create_date ,update_date ) VALUES (?,?,?,?,now(), now())";
@@ -47,9 +47,9 @@ public class BoardDao {
 		Connection conn = null;
 		PreparedStatement boardStmt = null;
 		
-		String dburl = "jdbc:mariadb://localhost:3306/blog";
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
 		
@@ -95,9 +95,9 @@ public class BoardDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String dburl = "jdbc:mariadb://localhost:3306/blog";
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		
 		String sql = "SELECT COUNT(*) cnt FROM board";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
@@ -117,9 +117,9 @@ public class BoardDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		String dburl = "jdbc:mariadb://localhost:3306/blog";
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		
 		String sql = "SELECT board_no boardNo, category_name categoryName, board_title boardTitle, board_content boardContent, create_date createDate, update_date updateDate FROM board WHERE board_no=?";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
@@ -148,9 +148,9 @@ public class BoardDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
-		String dburl = "jdbc:mariadb://localhost:3306/blog";
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
 		
 		String sql = "UPDATE board SET category_name=? board_title=? boardContent=?  WHERE boardNo=?";
@@ -174,9 +174,9 @@ public class BoardDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
-		String dburl = "jdbc:mariadb://localhost:3306/blog";
+		String dburl = "jdbc:mariadb://13.124.231.44/blog";
 		String dbuser = "root";
-		String dbpw = "java1234";
+		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw);
 		
 		String sql = "DELETE FROM board where board_no=?";

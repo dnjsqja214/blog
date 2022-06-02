@@ -14,9 +14,9 @@ public class CategoryDao {
       System.out.println("드라이버 로딩 성공");
       
       Connection conn = null;
-      String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
-      String dbuser = "root"; // 아이디 저장
-      String dbpw = "java1234"; // 비번 저장
+      String dburl = "jdbc:mariadb://13.124.231.44/blog";
+	  String dbuser = "root";
+	  String dbpw = "mariadb1234";
       conn = DriverManager.getConnection(dburl,dbuser,dbpw);
       System.out.println(conn+"<--conn"); // 디버깅 코드
       
@@ -55,10 +55,9 @@ public class CategoryDao {
 	        Connection conn = null;
 			PreparedStatement stmt = null;
 			ResultSet rs = null;
-	       
-			String dburl = "jdbc:mariadb://localhost:3306/blog"; // 주소저장
-	        String dbuser = "root"; // 아이디 저장
-	        String dbpw = "java1234"; // 비번 저장
+			String dburl = "jdbc:mariadb://13.124.231.44/blog";
+			String dbuser = "root";
+			String dbpw = "mariadb1234";
 	        conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 	        System.out.println(conn+"<--conn"); // 디버깅 코드
 	        String sql = "SELECT category_name categoryName FROM board GROUP BY category_name ORDER BY category_name asc";
