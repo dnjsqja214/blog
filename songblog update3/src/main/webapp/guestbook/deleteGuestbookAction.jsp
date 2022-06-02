@@ -12,8 +12,8 @@
 	GuestbookDao guestbookDao = new GuestbookDao(); // import="dao.*"추가
 	Guestbook guestbook= new Guestbook();  // import="vo.*"추가
 	// 변수에 값을 대입
-	guestbook.guestbookNo = guestbookNo;
-	guestbook.guestbookPw = guestbookPw;
+	guestbook.setGuestbookNo(guestbookNo);
+	guestbook.setGuestbookPw(guestbookPw);
 	
 	// 메서드 호출
 	int row = guestbookDao.deleteGuestbook(guestbookNo, guestbookPw); 
@@ -23,7 +23,7 @@
 		response.sendRedirect(request.getContextPath()+"/guestbook/guestbookList.jsp");
 	} else if (row == 0) { // 입력이 안되면
 		System.out.println("삭제실패");
-		response.sendRedirect(request.getContextPath()+"/guestbook/updateGuestbookForm.jsp?guestNo="+guestbook.guestbookNo);
+		response.sendRedirect(request.getContextPath()+"/guestbook/updateGuestbookForm.jsp?guestNo="+guestbook.getGuestbookNo());
 	} else {
 		System.out.println("update 오류");
 	}

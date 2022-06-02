@@ -12,6 +12,7 @@
 	// 값넘겨받기
 	String writer = request.getParameter("writer");
 	String guestbookContent = request.getParameter("guestbookContent");
+	String guestbookMemo = request.getParameter("guestbookMemo");
 	String guestbookPw = request.getParameter("guestbookPw");
 	
 	// 디버깅
@@ -22,9 +23,10 @@
 	GuestbookDao guestbookDao = new GuestbookDao();
 	Guestbook guestbook = new Guestbook();
 	
-	guestbook.guestbookContent=guestbookContent;								
-	guestbook.guestbookPw=guestbookPw;										//-->guestbook에 가져온 파라미터값 넣기
-	guestbook.writer=writer;
+	guestbook.setGuestbookContent(guestbookContent);	
+	guestbook.setGusetbookMemo(guestbookMemo);
+	guestbook.setGuestbookPw(guestbookPw);										//-->guestbook에 가져온 파라미터값 넣기
+	guestbook.setWriter(writer);
 	
 	guestbookDao.insertGuestbook(guestbook);
 	

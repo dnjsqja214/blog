@@ -16,9 +16,9 @@
 	GuestbookDao guestbookDao = new GuestbookDao();
 	Guestbook guestbook = new Guestbook();
 	
-	guestbook.guestbookContent = guestbookContent;
-	guestbook.guestbookNo = guestbookNo;
-	guestbook.guestbookPw = guestbookPw;
+	guestbook.setGuestbookContent(guestbookContent);
+	guestbook.setGuestbookNo(guestbookNo);
+	guestbook.setGuestbookPw(guestbookPw);
 	
 	guestbookDao.updateGuestbook(guestbook);
 	

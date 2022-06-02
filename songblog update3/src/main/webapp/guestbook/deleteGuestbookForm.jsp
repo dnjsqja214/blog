@@ -9,9 +9,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>삭제</h1>
+	<div  class="container">
+	<div class="row">
+ 	<div class="col-sm-5"></div>
+		<h1 class="text-danger">삭제</h1>
+ 	</div>
 	<form  method="post" action="<%=request.getContextPath()%>/guestbook/deleteGuestbookAction.jsp">
 		<table>
 			<tr>
@@ -24,10 +29,11 @@
 			</tr>
 			<tr>
 				<td>
-					<button type="submit">제출</button>
+					<button type="submit" class="btn btn-outline-danger">삭제</button>
 				</td>
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>

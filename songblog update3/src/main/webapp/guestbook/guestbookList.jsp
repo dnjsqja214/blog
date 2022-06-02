@@ -1,84 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="dao.GuestbookDao"%>
-<%@ page import="java.sql.*"%>
-<%@ page import="java.util.*"%>
-<%@ page import="vo.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*"%>
+<%@ page import = "java.sql.*" %>
+<%@ page import = "vo.*" %>
+<%@ page import = "dao.GuestbookDao" %>
 <%
-	int currentPage = 1;
-	if (request.getParameter("currentPage") != null) {
+	int currentPage = 1; //현재페이지
+	
+	if(request.getParameter("currentPage") != null) {
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}
+	System.out.println(currentPage+"<--currentPage"); // 디버깅
 	
 	int rowPerPage = 5;
-	int beginRow = (currentPage - 1) * rowPerPage;
-	GuestbookDao guestbookDao = new GuestbookDao();
-	ArrayList<Guestbook> list = guestbookDao.selectGuestbookListByPage(beginRow, rowPerPage);
+	int beginRow = (currentPage-1)*rowPerPage;
 	
+	GuestbookDao guestbookDao = new GuestbookDao();
+	// 담고싶은 행 개수만큼 담는 메서드 호출해서 Guestbook Arraylist에 저장
+	ArrayList<Guestbook> list = guestbookDao.selectGuestbookListByPage(beginRow,rowPerPage);
+	
+	
+	// 다음페이징 위함
 	int lastPage = 0;
-	int totalCount = guestbookDao.selectGuestbookTotalRow(); 
-	lastPage = (int)(Math.ceil((double)totalCount / (double)rowPerPage)); 
-	// 5.0/2.0 = 2.5 ->3.0
-	// 4.0/2.0 = 2.0
-	lastPage = (int)(Math.ceil((double)totalCount / (double)rowPerPage)); 
+	int totalCount = guestbookDao.selectGuestbookTotalRow();
+	lastPage = (int)(Math.ceil((double)totalCount / (double)rowPerPage)); // math.ceil사용해서 무조건 올림하기 
+	// 4.0 / 2.0 = 2.0 -> 2.0
+	// 5.0 / 2.0 = 2.5 -> 3.0으로 올리기
+/* 	lastPage = totalCount / rowPerPage;
+	if(totalCount % rowPerPage != 0){
+		lastPage++;
+	} 얘도 가능*/
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>guestbookList</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<style>
+	.jb-wrap { padding: 60px 10px; } /*세로 길이 조절*/
+	.text-center {float:none; margin:0 auto;} /* 가운데 정렬 */
+</style>
 </head>
 <body>
-	<!-- 메인메뉴 시작-->
-	<jsp:include page="/inc/upMenu.jsp"></jsp:include>
-	<!-- include시 컨텍스명(프로젝트이름)을 명시하지 않는다. -->
-	<!-- 메인 메뉴 끝 -->
-	<% 
-		for(Guestbook g : list) {
+<div class="jumbotron text-center">
+	<h1 class="logo mr-auto">
+		방명록
+	</h1>
+</div>
+<br>
+<br>
+	<!-- 메인 메뉴 시작 -->
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/board/boardList.jsp">boardList</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link  active" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp">Guestbook</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Photo</a>
+    </li>
+  </ul>
+<div class ="container">
+	<!-- 방명록 입력 -->
+	<div class="jb-wrap">
+	<!-- 방명록 리스트 출력 -->
+	<br>
+<%
+	for(Guestbook g : list) {
+%>
+		<div class="card">
+			<div class="card-header">
+				<div class="input-group">
+					<div class="input-group-prepend">
+					<!-- 아이디를 누르시 모아보기 -->
+						<button type="button" class="btn btn-primary"><%=g.getWriter()%></button>
+					</div>
+					<input type="text" class="form-control" value="<%=g.getGuestbookContent()%>" readonly="readonly">
+				</div>
+			</div>
+			<div class="card-body"><%=g.getGusetbookMemo()%></div>
+			<div class="card-footer" style="text-align: right;">
+				<div class="btn-group" style="float: left;">
+					<a href = "<%=request.getContextPath() %>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>&writer=<%=g.getWriter()%>" class="btn btn-primary btn-info ">수정</a>
+					<a href = "<%=request.getContextPath() %>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>" class="btn btn-danger ">삭제</a>
+				</div>
+				<%=g.getCreateDate()%>
+			</div>
+		</div>
+		<br>
+	<%
+		}
 	%>
-		<table border="1">
-			<tr>
-				<td><%=g.writer%></td>
-				<td><%=g.createDate%></td>
-			</tr>
-			<tr>
-				<td colspan="2"><%=g.guestbookContent%></td>
-			</tr>
-		</table>
-		<div>
-			<a href="<%=request.getContextPath() %>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.guestbookNo%>">수정</a>
-		</div>
-		<div>
-			<a href="<%=request.getContextPath() %>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.guestbookNo%>&guestbookPw=<%=g.guestbookPw%>">삭제</a>
-		</div>
-	<%	
+	<br>
+	<form method="post" action="<%=request.getContextPath()%>/guestbook/insertGuestbookAction.jsp">
+	<table class = "table table-bordered">
+		<tr>
+			<td>글쓴이</td>
+			<td><input type = "text" name="writer" class="form-control"></td>
+			<td>비밀번호</td>
+			<td><input type = "password" name="guestbookPw" class="form-control"></td>	
+			<td>제목</td>
+			<td><input type = "text" name="guestbookContent" class="form-control"></td>
+		</tr>
+		<tr>
+			<td colspan="4">
+			<textarea name = "guestbookMemo" rows="2" cols="70" class="form-control"></textarea>
+			</td>
+		</tr>
+	</table>
+	<button type = "submit" class="btn btn-primary float-right" style= "margin-bottom:10px">방명록 등록</button>
+
+	</form>
+
+	<ul class="pagination">
+	<%
+		if(currentPage > 1){
+	%>
+			<li class="page-item"><a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage-1%>" class="page-link">이전</a></li>
+	<%
 		}
 	
-		if(currentPage > 1) {
-	%>
-			<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage-1%>">이전</a>
-	<%
-		}
-		
 		if(currentPage < lastPage) {
-	%>
-			<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage+1%>">다음</a>
+	%>	
+			<li class="page-item"><a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp?currentPage=<%=currentPage+1%>" class="page-link">다음</a></li>
 	<%
 		}
 	%>
-	<!-- 방명록 입력 -->
-	<form method="post" action="<%=request.getContextPath()%>/guestbook/insertGuestbookAction.jsp">
-		<table border="1">
-			<tr>
-				<td>글쓴이</td>
-				<td><input type="text" name="writer"></td>
-				<td>비밀번호</td>
-				<td><input type="password" name="guestbookPw"></td>
-			</tr>
-			<tr>
-				<td colspan="4"><textarea name="guestbookContent" rows="2" cols="60"></textarea></td>
-			</tr>
-		</table>
-		<button type="submit">입력</button>
-	</form>
+	</ul>
+
+	</div>
+</div>
 </body>
-</html>
+</html> 
