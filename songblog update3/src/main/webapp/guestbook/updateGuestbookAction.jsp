@@ -8,6 +8,8 @@
 	int guestbookNo = Integer.parseInt(request.getParameter("guestbookNo"));
 	String guestbookContent =  request.getParameter("guestbookContent");
 	String guestbookPw = request.getParameter("guestbookPw");
+	String guestbookMemo = request.getParameter("guestbookMemo");
+	
 	// 디버깅
 	System.out.println(guestbookNo+"<-guestbookNo");
 	System.out.println(guestbookContent+"<-guestbookContent");
@@ -19,6 +21,7 @@
 	guestbook.setGuestbookContent(guestbookContent);
 	guestbook.setGuestbookNo(guestbookNo);
 	guestbook.setGuestbookPw(guestbookPw);
+	guestbook.setGuestbookMemo(guestbookMemo);
 	
 	guestbookDao.updateGuestbook(guestbook);
 	

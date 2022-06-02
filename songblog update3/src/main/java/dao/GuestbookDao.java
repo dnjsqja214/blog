@@ -30,7 +30,7 @@ public class GuestbookDao {
 		 ORDER BY create_date 
 		 DESC LIMIT ?, ?
 		 */
-		String sql = "SELECT guestbook_no guestbookNo, guestbook_content guestbookContent,guestbook_memo  gusetbookMemo, writer, create_date createDate FROM guestbook ORDER BY create_date DESC LIMIT ?, ?";
+		String sql = "SELECT guestbook_no guestbookNo, guestbook_content guestbookContent,guestbook_memo  guestbookMemo, writer, create_date createDate FROM guestbook ORDER BY create_date DESC LIMIT ?, ?";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, beginRow);
@@ -43,7 +43,7 @@ public class GuestbookDao {
 			Guestbook g = new Guestbook();
 			g.setGuestbookNo(rs.getInt("guestbookNo"));
 			g.setGuestbookContent(rs.getString("guestbookContent"));
-			g.setGusetbookMemo(rs.getString("gusetbookMemo"));
+			g.setGuestbookMemo(rs.getString("guestbookMemo"));
 			g.setWriter(rs.getString("writer"));
 			g.setCreateDate(rs.getString("createDate"));
 			list.add(g);
@@ -101,11 +101,12 @@ public class GuestbookDao {
 		String dbpw = "mariadb1234";
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
 		
-		String sql = "UPDATE guestbook SET guestbook_content=? WHERE guestbook_no=? AND guestbook_pw=?";
+		String sql = "UPDATE guestbook SET guestbook_content=?, guestbook_memo=? WHERE guestbook_no=? AND guestbook_pw=?";
 		stmt = conn.prepareStatement(sql);
 		stmt.setString(1, guestbook.getGuestbookContent());
-		stmt.setInt(2, guestbook.getGuestbookNo());
-		stmt.setString(3, guestbook.getGuestbookPw());
+		stmt.setString(2, guestbook.getGuestbookMemo());
+		stmt.setInt(3, guestbook.getGuestbookNo());
+		stmt.setString(4, guestbook.getGuestbookPw());
 		System.out.println(stmt+" <-- sql updateGuestbook"); 
 		row = stmt.executeUpdate();
 		
@@ -157,7 +158,7 @@ public class GuestbookDao {
 		conn = DriverManager.getConnection(dburl, dbuser, dbpw); 
 		stmt = conn.prepareStatement(sql);
 		stmt.setString(1, guestbook.getGuestbookContent());
-		stmt.setString(2, guestbook.getGusetbookMemo());
+		stmt.setString(2, guestbook.getGuestbookMemo());
 		stmt.setString(3, guestbook.getWriter());
 		stmt.setString(4, guestbook.getGuestbookPw());
 		int row = stmt.executeUpdate();

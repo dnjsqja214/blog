@@ -62,7 +62,7 @@
 					<input type="text" class="form-control" value="<%=g.getGuestbookContent()%>" readonly="readonly">
 				</div>
 			</div>
-			<div class="card-body"><%=g.getGusetbookMemo()%></div>
+			<div class="card-body"><%=g.getGuestbookMemo()%></div>
 			<div class="card-footer" style="text-align: right;">
 				<div class="btn-group" style="float: left;">
 					<a href = "<%=request.getContextPath() %>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>&writer=<%=g.getWriter()%>" class="btn btn-primary btn-info ">수정</a>

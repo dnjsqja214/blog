@@ -8,7 +8,7 @@ public class Guestbook {
 	private String createDate;
 	private String updateDate;
 	private String guestbookPw;
-	private String gusetbookMemo;
+	private String guestbookMemo;
 	
 	public int getGuestbookNo() {
 		return guestbookNo;
@@ -46,11 +46,11 @@ public class Guestbook {
 	public void setGuestbookPw(String guestbookPw) {
 		this.guestbookPw = guestbookPw;
 	}
-	public String getGusetbookMemo() {
-		return gusetbookMemo;
+	public String getGuestbookMemo() {
+		return guestbookMemo;
 	}
-	public void setGusetbookMemo(String gusetbookMemo) {
-		this.gusetbookMemo = gusetbookMemo;
+	public void setGuestbookMemo(String guestbookMemo) {
+		this.guestbookMemo = guestbookMemo;
 	}
 	
 }

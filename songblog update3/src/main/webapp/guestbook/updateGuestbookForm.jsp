@@ -29,11 +29,15 @@
 			<table class="table table-bordered">
 				<tr>
 					<td><%=writer%></td>
-					<td><input type="number" name="guestbookNo" readonly="readonly"value="<%=guestbookNo%>"></td>
+					<td><input type="text" name="guestbookNo" readonly="readonly"value="<%=guestbookNo%>"></td>
 				</tr>
 				<tr>
-					<td>guestbookContent</td>
-					<td colspan="2"><textarea name="guestbookContent" rows="2" cols="60"></textarea></td>
+					<td>guestbookContend</td>
+					<td><input type="text" name="guestbookContent" ></td>
+				</tr>
+				<tr>
+					<td>guestbookMemo</td>
+					<td colspan="2"><textarea name="guestbookMemo" rows="2" cols="60"></textarea></td>
 				</tr>
 				<tr>
 					<td>guestbookPw</td>
