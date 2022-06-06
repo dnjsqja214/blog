@@ -6,6 +6,7 @@
 <title>insertPhotoForm.jsp</title>
 </head>
 <body>
+<jsp:include page="/photo/photoHeader.jsp"></jsp:include>
 	<h1>이미지 등록</h1>
 	<!-- 
 		1) form태그안에 값을 넘기는 기본값(enctype속성)은 문자열이다.
@@ -22,12 +23,22 @@
 				<td><input type="file" name="photo"></td>
 			</tr>
 			<tr>
+				<td>제목</td>
+				<td><input type="text" name="photoTitle"></td>
+			</tr>
+			<tr>
 				<td>비밀번호</td>
 				<td><input type="password" name="photoPw"></td>
 			</tr>
 			<tr>
 				<td>글쓴이</td>
 				<td><input type="text" name="writer"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>
+					<textarea name = "photoMemo" rows="2" cols="70" class="form-control"></textarea>
+				</td>
 			</tr>
 		</table>
 		<button type="submit">이미지등록</button>

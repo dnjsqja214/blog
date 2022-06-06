@@ -28,6 +28,8 @@
 
 	String photoPw = multiReq.getParameter("photoPw");
 	String writer = multiReq.getParameter("writer");
+	String photoTitle = multiReq.getParameter("photoTitle");
+	String photoMemo = multiReq.getParameter("photoMemo");
 	
 	// input type="file" name="photo" 
 	String photoOriginalName = multiReq.getOriginalFileName("photo"); // 파일 업로드시 원본의 이름
@@ -45,11 +47,13 @@
 		System.out.println("db고고!");
 		PhotoDao photoDao = new PhotoDao();
 		Photo photo = new Photo();
-		photo.photoName = photoName;
-		photo.photoOriginalName = photoOriginalName;
-		photo.photoType = photoType;
-		photo.photoPw = photoPw;
-		photo.writer = writer;
+		photo.setPhotoName(photoName);
+		photo.setPhotoOriginalName(photoOriginalName);
+		photo.setPhotoType(photoType);
+		photo.setPhotoPw(photoPw);
+		photo.setWriter(writer);
+		photo.setPhotoTitle(photoTitle);
+		photo.setPhotoMemo(photoMemo);
 		
 		photoDao.insertPhoto(photo); // 메서드 구현
 		

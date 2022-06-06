@@ -12,12 +12,12 @@
 	System.out.println(photoNo+"<--photoNo");
 	System.out.println(photoName+"<--photoName");
 	
+	
 	PhotoDao photoDao = new PhotoDao();
 	Photo photo = new Photo();
-	photo.photoNo = photoNo;
-	photo.photoName = photoName;
+	photo.setPhotoNo(photoNo);
 	
-	photoDao.selectPhotoOne(photoNo, photoName);
+	photo = photoDao.selectPhotoOne(photoNo);
 	
 	
 	
@@ -27,23 +27,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>photoOne</h1>
-	<img src="<%=request.getContextPath()%>/upload/<%=photoName%>" width="300" height="300">
-	<table  border="1">
+<jsp:include page="/photo/photoHeader.jsp"></jsp:include>
+	<div class="col-sm-10">
+	<h1>사진 상세보기</h1>
+	<a class="btn btn-outline-dark" role="button" href="<%=request.getContextPath()%>/photo/photoList.jsp">이전으로</a>
+	<table class="table table-bordered">
 		<tr>
-			<td>photoNo</td>
-			<td><%=photo.photoNo%></td>
+			<td>번호</td>
+			<td><%=photo.getPhotoNo()%></td>
 		</tr>
 		<tr>
-			<td>photoName</td>
-			<td><%=photo.photoName%></td>
+			<td>작성자</td>
+			<td><%=photo.getWriter()%></td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td><%=photo.getPhotoTitle()%></td>
+		</tr>
+		<tr>
+			<td>이미지</td>
+			<td>
+				<img src="<%=request.getContextPath()%>/upload/<%=photo.getPhotoName()%>" width="800" height="500">
+			</td>
+		</tr>
+		<tr>
+			<td>내용</td>
+			<td>
+				<textarea rows="5" cols="150" readonly="readonly"><%=photo.getPhotoMemo() %></textarea>
+			</td>
 		</tr>
 	</table>
 	<div>
-		<a href="<%=request.getContextPath()%>/photo/updatePhotoForm.jsp">수정</a>
-		<a href="<%=request.getContextPath()%>/photo/deletePhotoForm.jsp?photoNo=<%=photoNo%>">삭제</a>
+		<a class="btn btn-outline-primary" role="button" href="<%=request.getContextPath()%>/photo/updatePhotoForm.jsp?photoNo=<%=photo.getPhotoNo()%>">수정</a>
+		<a class="btn btn-outline-danger" role="button" href="<%=request.getContextPath()%>/photo/deletePhotoForm.jsp?photoNo=<%=photo.getPhotoNo()%>">삭제</a>
+	</div>
 	</div>
 </body>
 </html>
