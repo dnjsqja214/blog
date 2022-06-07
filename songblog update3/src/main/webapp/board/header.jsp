@@ -27,12 +27,12 @@ ArrayList<HashMap<String,Object>> categoryList = categoryDao.categoryCnt();
 int totalCount = boardDao.selectboardTotalRow();  // 전체 행개수
 
 %>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
- <nav class="navbar navbar-expand-sm bg- navbar-dark">
-	  <h1>B L O G</h1>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<nav class="navbar navbar-expand-sm bg- navbar-dark">
+	<a class="text-dark" href="<%=request.getContextPath()%>/blog/boardList.jsp"><h1>B L O G</h1></a>
 		<div class="spinner-grow text-danger"></div>
 		<div class="spinner-grow text-warning"></div>
 		<div class="spinner-grow text-success"></div>
@@ -41,10 +41,9 @@ int totalCount = boardDao.selectboardTotalRow();  // 전체 행개수
 		<div class="spinner-grow text-muted"></div>
 		<div class="spinner-grow text-secondary"></div>
 		<div class="spinner-grow text-dark"></div>
-	</nav>  
+</nav>  
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-</nav>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark"></nav>
 	<!-- category별 게시글 링크 메뉴 -->
 	<div>
 		<ul class="list-group list-group-horizontal"> <!--  리스트 그룹으로 함 -->

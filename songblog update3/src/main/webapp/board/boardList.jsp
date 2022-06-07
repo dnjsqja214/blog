@@ -66,8 +66,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
- <nav class="navbar navbar-expand-sm bg- navbar-dark">
-	  <h1>B L O G</h1>
+	<nav class="navbar navbar-expand-sm bg- navbar-dark">
+		<h1>B L O G</h1>
 		<div class="spinner-grow text-danger"></div>
 		<div class="spinner-grow text-warning"></div>
 		<div class="spinner-grow text-success"></div>
@@ -78,8 +78,7 @@
 		<div class="spinner-grow text-dark"></div>
 	</nav>  
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-</nav>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark"></nav>
 	<!-- category별 게시글 링크 메뉴 -->
 	<div>
 		<ul class="list-group list-group-horizontal"> <!--  리스트 그룹으로 함 -->
@@ -119,7 +118,7 @@
 	<!-- 좌측 인덱스 추가 -->
 	<div class="row">
 	<div class="col-sm-2">
-    <h3>Index</h3>
+    <a class="text-dark" href="<%=request.getContextPath()%>/inc/upMenu.jsp"><h3>Index</h3></a>
     <ul class="nav nav-pills flex-column">
 		<li class="nav-item">
 		  	<a class="nav-link active" href="<%=request.getContextPath()%>/board/boardList.jsp">boardList</a>
