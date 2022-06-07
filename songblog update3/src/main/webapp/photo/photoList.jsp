@@ -24,7 +24,7 @@
 <jsp:include page="/photo/photoHeader.jsp"></jsp:include>
 	<div class="col-sm-10">
 	<h2>이미지 목록<span class="badge badge-pill badge-dark"><%=totalCount %></span></h2>
-		<table border="1">
+		<table class="table table-borderless">
 			<tr>
 				<%
 					// 한행의 5개의 이미지 출력(tr안에 td가 5개)

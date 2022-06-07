@@ -4,9 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <title>insertPhotoForm.jsp</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 <jsp:include page="/photo/photoHeader.jsp"></jsp:include>
+<div class="col-sm-10">
 	<h1>이미지 등록</h1>
 	<!-- 
 		1) form태그안에 값을 넘기는 기본값(enctype속성)은 문자열이다.
@@ -17,7 +19,7 @@
 		6) 외부 라이브러리(cos.jar)를 사용해서 복잡은 코드 간단하게 구현하자.
 	-->
 	<form action="<%=request.getContextPath()%>/photo/insertPhotoAction.jsp" method="post" enctype="multipart/form-data">
-		<table border="1">
+		<table class="table table-borderless">
 			<tr>
 				<td>이미지파일</td>
 				<td><input type="file" name="photo"></td>
@@ -41,7 +43,8 @@
 				</td>
 			</tr>
 		</table>
-		<button type="submit">이미지등록</button>
+		<button class="btn btn-success" type="submit">이미지등록</button>
 	</form>
+</div>
 </body>
 </html>

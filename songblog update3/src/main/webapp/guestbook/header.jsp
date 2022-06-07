@@ -20,16 +20,19 @@
 		<div class="col-sm-2">
 		<br><br><br>
 		<a class="text-dark" href="<%=request.getContextPath()%>/inc/upMenu.jsp"><h3>Index</h3></a>
-	    <ul class="nav nav-pills flex-column">
-			<li class="nav-item">
-			  	<a class="nav-link" href="<%=request.getContextPath()%>/board/boardList.jsp">boardList</a>
-			</li>
-	        <li class="nav-item">
-	          	<a class="nav-link active" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp">Guestbook</a>
-	        </li>
-	        <li class="nav-item">
-	        	  <a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Photo</a>
-	        </li>
-	    </ul>
-	    </div>
+		    <ul class="nav nav-pills flex-column">
+				<li class="nav-item">
+				  	<a class="nav-link" href="<%=request.getContextPath()%>/board/boardList.jsp">boardList</a>
+				</li>
+		        <li class="nav-item">
+		          	<a class="nav-link active" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp">Guestbook</a>
+		        </li>
+		        <li class="nav-item">
+		        	<a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Photo</a>
+		        </li>
+		        <li class="nav-item">
+		        	<a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Pdf</a>
+		        </li>
+		    </ul>
+		</div>
     

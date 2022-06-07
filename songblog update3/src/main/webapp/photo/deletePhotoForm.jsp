@@ -15,9 +15,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
+<br>
 <jsp:include page="/photo/photoHeader.jsp"></jsp:include>
 	<div class="col-sm-10">
-	<h1>이미지 삭제</h1>
+	<h2>이미지 삭제</h2>
 	<a class="btn btn-outline-dark" role="button" href="<%=request.getContextPath()%>/photo/photoList.jsp">리스트로 가기</a>
 	<form method="post" action="<%=request.getContextPath()%>/photo/deletePhotoAction.jsp">
 		<table class="table table-bordered">

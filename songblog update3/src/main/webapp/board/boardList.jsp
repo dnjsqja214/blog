@@ -127,8 +127,11 @@
           	<a class="nav-link" href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp">Guestbook</a>
         </li>
         <li class="nav-item">
-        	  <a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Photo</a>
+        	<a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Photo</a>
         </li>
+        <li class="nav-item">
+	    	<a class="nav-link" href="<%=request.getContextPath()%>/photo/photoList.jsp">Pdf</a>
+	    </li>
     </ul>
     </div>
     <div class="col-sm-10">
