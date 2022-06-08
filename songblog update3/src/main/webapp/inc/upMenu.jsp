@@ -50,7 +50,7 @@
 			<div class="col-sm-1"></div>
 			<div class="col-sm-4">
 				<div>
-					<h3>photok</h3>
+					<h3>photo</h3>
 					<a href="<%=request.getContextPath()%>/photo/photoList.jsp"><img src="<%=request.getContextPath()%>/upload/photo.png"  class="img-thumbnail" alt="Cinque Terre" width="500" height="500"></a>
 				</div>
 			</div>
