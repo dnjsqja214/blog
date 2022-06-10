@@ -7,7 +7,9 @@
 	System.out.println(guestbookNo+"<-updateGuestNo");
 	String writer = request.getParameter("writer");
 	System.out.println(writer+"<-writer");
-	
+	String guestbookContent = request.getParameter("guestbookContent");
+	String guestbookMemo = request.getParameter("guestbookMemo");
+	System.out.println(guestbookMemo+"<-guestbookMemo");
 %>
 <!DOCTYPE html>
 <html>
@@ -29,15 +31,15 @@
 			<table class="table table-bordered">
 				<tr>
 					<td><%=writer%></td>
-					<td><input type="text" name="guestbookNo" readonly="readonly"value="<%=guestbookNo%>"></td>
+					<td><input type="text" name="guestbookNo" readonly="readonly" value="<%=guestbookNo%>"></td>
 				</tr>
 				<tr>
 					<td>guestbookContend</td>
-					<td><input type="text" name="guestbookContent" ></td>
+					<td><input type="text" name="guestbookContent" value="<%=guestbookContent%>"></td>
 				</tr>
 				<tr>
 					<td>guestbookMemo</td>
-					<td colspan="2"><textarea name="guestbookMemo" rows="2" cols="60"></textarea></td>
+					<td colspan="2"><textarea name="guestbookMemo" rows="2" cols="60" ><%=guestbookMemo%></textarea></td>
 				</tr>
 				<tr>
 					<td>guestbookPw</td>

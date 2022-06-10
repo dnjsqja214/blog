@@ -65,7 +65,7 @@
 			<div class="card-body"><%=g.getGuestbookMemo()%></div>
 			<div class="card-footer" style="text-align: right;">
 				<div class="btn-group" style="float: left;">
-					<a href = "<%=request.getContextPath() %>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>&writer=<%=g.getWriter()%>" class="btn btn-primary btn-info ">수정</a>
+					<a href = "<%=request.getContextPath() %>/guestbook/updateGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>&&writer=<%=g.getWriter()%>&&guestbookContent=<%=g.getGuestbookContent()%>&&guestbookMemo=<%=g.getGuestbookMemo()%>" class="btn btn-primary btn-info ">수정</a>
 					<a href = "<%=request.getContextPath() %>/guestbook/deleteGuestbookForm.jsp?guestbookNo=<%=g.getGuestbookNo()%>" class="btn btn-danger ">삭제</a>
 				</div>
 				<%=g.getCreateDate()%>

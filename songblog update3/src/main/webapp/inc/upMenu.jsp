@@ -41,7 +41,7 @@
 			<div class="col-sm-4">
 				<div>
 					<h3>guestbook</h3>
-					<a href="<%=request.getContextPath()%>/board/boardList.jsp"><img src="<%=request.getContextPath()%>/upload/guestbook.png"  class="img-thumbnail" alt="Cinque Terre" width="500" height="500"></a>
+					<a href="<%=request.getContextPath()%>/guestbook/guestbookList.jsp"><img src="<%=request.getContextPath()%>/upload/guestbook.png"  class="img-thumbnail" alt="Cinque Terre" width="500" height="500"></a>
 				</div>
 			</div>
 		</div>
